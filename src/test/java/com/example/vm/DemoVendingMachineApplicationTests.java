@@ -57,5 +57,18 @@ public class DemoVendingMachineApplicationTests {
         applicationContext.publishEvent(new VmSignalEvent(3001, 3001));
     }
 
+    /**
+     * 1美元买巧克力
+     */
+    @Test
+    public void test4(){
+        // 投币100美分
+        applicationContext.publishEvent(new VmSignalEvent(1003, 1003));
+        // 选择商品位置2的商品, 35美分
+        applicationContext.publishEvent(new VmSignalEvent(2002, 2002));
+        // 取消操作
+        applicationContext.publishEvent(new VmSignalEvent(3002, 3002));
+    }
+
 
 }
