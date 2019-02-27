@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.vm.dao.mapper.ProductMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.example.vm.model.entity.Product">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="worth" property="worth" />
+        <result column="count" property="count" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, name, worth, count
+    </sql>
+    
+    <select id="selectForUpdateById" resultMap="BaseResultMap">
+      select * from product where id = #{productId, jdbcType=BIGINT}
+    </select>
+
+</mapper>

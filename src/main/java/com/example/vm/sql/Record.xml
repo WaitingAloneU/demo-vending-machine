@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.vm.dao.mapper.RecordMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.example.vm.model.entity.Record">
+        <id column="id" property="id" />
+        <result column="product_id" property="productId" />
+        <result column="record_status" property="recordStatus" />
+        <result column="amount" property="amount" />
+        <result column="insert_amount" property="insertAmount" />
+        <result column="insert_comprise" property="insertComprise" />
+        <result column="return_amount" property="returnAmount" />
+        <result column="return_comprise" property="returnComprise" />
+
+
+
+
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, product_id AS productId, record_status AS recordStatus, amount, insert_amount AS insertAmount, insert_comprise as insertComprise, return_amount as returnAmount, return_comprise as returnComprise
+    </sql>
+
+</mapper>
