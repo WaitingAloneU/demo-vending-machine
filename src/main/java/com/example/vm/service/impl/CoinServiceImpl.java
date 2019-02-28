@@ -36,11 +36,9 @@ public class CoinServiceImpl implements CoinService {
         if (amount == 0) return new ArrayList<>();
         if (amount > 0) {// 查询单一面值低于当前找零金额的所有种类硬币
             QueryWrapper<Coin> wrapper = new QueryWrapper<>();
-            log.info("amount-----" + amount);
             wrapper.le("amount", amount);
             wrapper.orderByDesc("amount");
             List<Coin> coins = coinMapper.selectList(wrapper);
-            log.info("coins---------" + coins);
             // 计算找零的硬币组合
             return getGiveCoins(coins, amount);
         }

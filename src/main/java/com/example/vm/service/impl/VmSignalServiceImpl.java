@@ -63,7 +63,7 @@ public class VmSignalServiceImpl implements VmSignalService {
      * @param signal
      */
     private void handlePositionSignal(Signal signal) {
-        log.info("处理位置信号");
+        log.info("处理位置信号, 信号信息:{}", signal);
         Product product = new Product();
         product.setId(Long.valueOf(signal.getSignalValue()));
         productService.chooseProduct(product);
@@ -74,7 +74,7 @@ public class VmSignalServiceImpl implements VmSignalService {
      * @param signal
      */
     private void handleOperationSignal(Signal signal) {
-        log.info("处理操作信号");
+        log.info("处理操作信号, 信号信息:{}", signal);
         if(signal.signalValue.equals(ConstsCode.OPERATION_CONFIRM)){
             operationConfirm();
         } else if(signal.signalValue.equals(ConstsCode.OPERATION_CANCEL)){
@@ -134,7 +134,7 @@ public class VmSignalServiceImpl implements VmSignalService {
      * @param signal
      */
     private void handleInsertSignal(Signal signal) {
-        log.info("处理投入信号");
+        log.info("处理投入信号, 信号信息:{}", signal);
         Coin coin = new Coin();
         coin.setCount(1);
         if(signal.signalValue.equals(ConstsCode.INSERT_COINS_100)){
@@ -146,7 +146,6 @@ public class VmSignalServiceImpl implements VmSignalService {
         } else {
             coin.setAmount(signal.signalValue);
         }
-        log.info("coin------" + coin);
         coinService.saveCoin(coin);
     }
 

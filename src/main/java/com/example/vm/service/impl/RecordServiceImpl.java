@@ -89,13 +89,11 @@ public class RecordServiceImpl implements RecordService {
         }
 
         List<Record> t = recordMapper.selectList(new EmptyWrapper<>());
-        log.info("records长度:{}", t.size());
     }
 
     @Override
     public Record confirmAmountAndInsert() {
         Record record = getLastRecord();
-        log.info("record---- "+ record);
         if(record != null && record.getRecordStatus() == 0 ){
             // 投入的硬币总额 > 选择的商品价格
             if(record.getInsertAmount() >= record.getAmount()) return record;
