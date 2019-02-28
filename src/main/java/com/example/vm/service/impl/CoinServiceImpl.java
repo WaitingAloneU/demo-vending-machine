@@ -100,10 +100,7 @@ public class CoinServiceImpl implements CoinService {
     }
 
     /**
-     * 计算找零的硬币组合,
-     * 仅限于人民币算法. 例如, 1,2,5,10,20,50,100 等面值.
-     * 非人民币面值不支持, 此题中的25支持.
-     *
+     *  找零算法
      * @param coins
      * @param target
      * @return
@@ -122,7 +119,7 @@ public class CoinServiceImpl implements CoinService {
             count = Math.min(count, coin.getCount());
             temp -= coin.getAmount() * count;
             result.add(Coin.builder().id(coin.getId()).amount(coin.getAmount()).count(count).build());
-            if (coin.getAmount() == 25) {
+            if (coin.getAmount() == 25) {// TODO 25是面值,写死. 待改进
                 c = count;
             }
         }
